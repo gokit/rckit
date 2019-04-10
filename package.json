@@ -5,9 +5,9 @@
   "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "start-prod": "webpack-dev-server --config ./webpack.config.js --mode production",
-    "build": "webpack --mode production build"
+    "start-dev": "webpack-dev-server --config ./webpack.config.js --mode development --history-api-fallback",
+    "start-prod": "webpack-dev-server --config ./webpack.config.js --mode production --history-api-fallback",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -24,14 +24,12 @@
     "url": "https://github.com/gokit/rckit/issues"
   },
   "homepage": "https://github.com/gokit/rckit#readme",
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ]
-  },
   "devDependencies": {
     "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",

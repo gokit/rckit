@@ -6,7 +6,8 @@ const rootDir = path.resolve(__dirname, ".");
 const srcDir = path.join(rootDir, "src");
 const distDir = path.join(rootDir, "dist");
 
-const htmlPlugin = new HtmlWebPackPlugin({
+const hotReloader = new webpack.HotModuleReplacementPlugin();
+const indexPage = new HtmlWebPackPlugin({
   template: path.join(srcDir, 'index.html'),
 });
 
@@ -26,16 +27,29 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
+        use: [
+          {
+            loader: "style-loader",
+          },
+          {
+            loader:  "css-loader",
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: "[name]_[local]_[hash:base64]",
+              sourceMap: true,
+            },
+          },
+        ]
+      },
     ]
   },
   resolve: {
     extensions: ['*', '.js', '.jsx']
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-      htmlPlugin,
+    indexPage,
+    hotReloader,
   ],
   devServer: {
     contentBase: distDir,
