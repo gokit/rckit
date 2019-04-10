@@ -8,11 +8,10 @@ const distDir = path.join(rootDir, "dist");
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: path.join(srcDir, 'index.html'),
-  filename: path.join(distDir, 'index.html'),
 });
 
 module.exports = {
-  entry: path.join(srcDir, './src/app.js'),
+  entry: path.join(srcDir, 'app.js'),
   output: {
     path: distDir,
     publicPath: '/',
